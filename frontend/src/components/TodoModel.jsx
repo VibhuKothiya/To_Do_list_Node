@@ -1,7 +1,7 @@
 import React from 'react'
 import { styled, alpha } from '@mui/material/styles';
 import  { useState, useEffect, useRef } from 'react'
-import { addTodoData, getTodoList, updateTodoData, emptyViewId, searchTodos } from '../redux-thunk/action/todoAction'
+import { addTodoData, getTodoList, updateTodoData, searchTodos } from '../redux-thunk/action/todoAction'
 import { useDispatch, useSelector } from 'react-redux'
 import Box from '@mui/material/Box';
 import AppBar from '@mui/material/AppBar';
@@ -94,31 +94,30 @@ const TodoModel = () => {
     function addtodos() {
         dispatch(addTodoData(todoData))
     }
-    // function updateData(id) {
-    //     dispatch(updateTodoData(todoData))
-    // }
-    // useEffect(() => {
-    //     if (!open) {
-    //         setTodoData({
-    //             name: ""
-    //         })
-    //         dispatch(emptyViewId())
-    //     }
-    // }, [open])
+    function updateData(id) {
+        dispatch(updateTodoData(todoData))
+    }
+    useEffect(() => {
+        if (!open) {
+            setTodoData({
+                name: ""
+            })
+        }
+    }, [open])
 
     useEffect(() => {
         dispatch(getTodoList())
     }, [dispatch])
 
-    // useEffect(() => {
-    //     if (viewId) {
-    //         axios.get(`http://localhost:5000/api/todo/view/${viewId}`)
-    //             .then((res) => {
-    //                 setTodoData(res.data);
-    //                 setOpen(true)
-    //             })
-    //     }
-    // }, [viewId])
+    useEffect(() => {
+        if (viewId) {
+            axios.get(`http://localhost:6060/v1/todo/viewList/${viewId}`)
+                .then((res) => {
+                    setTodoData(res.data);
+                    setOpen(true)
+                })
+        }
+    }, [viewId])
 
 
   return (
@@ -159,13 +158,13 @@ const TodoModel = () => {
                     <Box sx={style}>
                         <h5>ADD TASK</h5>
                         <br />
-                        <input type="text" placeholder='Add Todo Here' name='todo' value={todoData.todo} onChange={handleChange} style={{ border: "0px", boxShadow: "3px 2px 3px 2px #4e4e4e" }} />
+                        <input type="text" placeholder='Add Todo Here' name='task' value={todoData.task} onChange={handleChange} style={{ border: "0px", boxShadow: "3px 2px 3px 2px #4e4e4e" }} />
                         <Typography id="modal-modal-description" style={{ marginTop: "30px" }} sx={{ mt: 2 }}>
                             <Button variant="contained" onClick={() => {
 
 
                                 if (todoData._id && todoData) {
-                                    // updateData(todoData._id)
+                                    updateData(todoData._id)
                                     setOpen(false)
                                 } else {
                                     addtodos()

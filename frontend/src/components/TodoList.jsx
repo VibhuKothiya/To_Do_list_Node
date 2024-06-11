@@ -44,7 +44,7 @@ export default function TodoList() {
                                                     <Checkbox {...label} />
                                                 </div>
                                                 <div className="col-9">
-                                                    <h5 class="card-title" style={{ display: "inline-block", marginTop: "7px" }}>{todo.todo}</h5>
+                                                    <h5 class="card-title" style={{ display: "inline-block", marginTop: "7px" }}>{todo.task}</h5>
 
                                                 </div>
                                                 <div className="col-2" style={{ marginTop: "6px" }}>

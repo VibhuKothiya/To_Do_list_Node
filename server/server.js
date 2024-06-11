@@ -20,6 +20,6 @@ app.use("/v1", routes)
 
 dbConnect()
 
-http.createServer(app).listen(process.env.PORT, () =>{
+app.listen(process.env.PORT, () =>{
     console.log(`server started on ${process.env.PORT}`);
 })

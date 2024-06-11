@@ -16,4 +16,16 @@ const { TodoService} = require("../service")
         let result = await TodoService.deleteTodo(req.params.id)
         return res.send(result)
     }
-    module.exports = {addTodo, getTodo, deleteTodo}
+
+    const TodoView = async (req, res) =>{
+        let result = await TodoService.viewTodo(req.params.id)
+        return res.send(result)
+    }
+
+    const UpdateTodo = async (req, res) =>{
+        let result = await TodoService.updateTodo(req)
+        return res.send(result)
+    }
+
+
+    module.exports = {addTodo, getTodo, deleteTodo, UpdateTodo, TodoView}

@@ -3,7 +3,7 @@ import { DELETE_PRODUCT, EMPTY_ID, GET_PRODUCTS, POST_PRODUCT, SEARCH_TODOS, UPD
 
 export const getTodoList = () => {
     return (dispatch) => {
-        axios.get("http://localhost:6000/v1/todo/getList")
+        axios.get("http://localhost:6060/v1/todo/getList")
             .then((res) => {
                 dispatch({
                     type: GET_PRODUCTS,
@@ -16,7 +16,7 @@ export const getTodoList = () => {
 
 export const addTodoData = (todoData) => {
     return (dispatch) => {
-        axios.post("http://localhost:6000/v1/todo/add", todoData)
+        axios.post("http://localhost:6060/v1/todo/add", todoData)
             .then((res) => {
                 dispatch({
                     type: POST_PRODUCT,
@@ -29,7 +29,7 @@ export const addTodoData = (todoData) => {
 
 export const deleteTodoData = (id) => {
     return (dispatch) => {
-        axios.delete(`http://localhost:6000/v1/todo/deleteList/${id}`)
+        axios.delete(`http://localhost:6060/v1/todo/deleteList/${id}`)
             .then((res) => {
                 dispatch({
                     type: DELETE_PRODUCT,
@@ -47,18 +47,18 @@ export const viewTodoData = (id) => {
     }
 }
 
-// export const updateTodoData = (todoData) => {
-//     return (dispatch) => {
-//         axios.put(`http://localhost:5000/api/todoList/update/${todoData._id}`, todoData)
-//             .then((res) => {
-//                 dispatch({
-//                     type: UPDATE_PRODUCT,
-//                     payload: res.data
+export const updateTodoData = (todoData) => {
+    return (dispatch) => {
+        axios.put(`http://localhost:6060/v1/todo/updateList/${todoData._id}`, todoData)
+            .then((res) => {
+                dispatch({
+                    type: UPDATE_PRODUCT,
+                    payload: res.data
 
-//                 })
-//             })
-//     }
-// }
+                })
+            })
+    }
+}
 
 
 // export const emptyViewId = () => {

@@ -5,8 +5,9 @@ import TodoModel from './TodoModel'
 const Home = () => {
   return (
     <>
-      <TodoList />
+      
       <TodoModel />
+      <TodoList />
     </>
   )
 }
